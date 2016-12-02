@@ -1,0 +1,1 @@
+window.crawler = window.crawler || {};
