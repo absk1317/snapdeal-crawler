@@ -16,7 +16,7 @@ class Crawl < ActiveRecord::Base
     doc.css("a").each { |x| all_links << x.attr('href') }
     all_links.compact!
     all_links.each  { |x| product_links << x if x.include?('https://www.snapdeal.com/product/') }
-    product_links.each do |link|
+    product_links.uniq.each do |link|
       doc = Nokogiri::HTML(open(link))
       catalog_id           =  doc.search('#catalogId').first.attributes['value'].value
       original_price_field =  doc.search('.pdpCutPrice')
