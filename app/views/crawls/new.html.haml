@@ -1,0 +1,6 @@
+= form_for @crawl do |f|
+  .field
+    = f.label :url, 'Enter URL'
+    = f.text_field :url
+  .field
+    = f.submit 'Start Crawling', data: { disable_with: 'STARTING...' }

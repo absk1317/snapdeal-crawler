@@ -1,0 +1,23 @@
+%table.table.table-hover.table-bordered
+  %thead
+    %tr
+      %th.col-md-4 Name
+      %th.col-md-2 Original Price
+      %th.col-md-2 Current Price
+      %th.col-md-1 Lowest EMI
+      %th.col-md-1 Image
+      %th.col-md-1 Brand
+      %th.col-md-1 Color
+  %tbody
+    - @products.each do |product|
+      %tr.data-href{'data-href' => product.product_url}
+        %td= product.name
+        %td= amount(product.original_price)
+        %td= amount(product.current_price)
+        %td= amount(product.emi_starts_at)
+        %td
+          = image_tag(product.image_url, height: '45', width: '45')
+        %td= product.brand.titleize
+        %td= color(product.color)
+:javascript
+  crawler.table.init();
