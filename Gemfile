@@ -29,6 +29,7 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'haml'
 gem 'simple_form'
+gem 'nokogiri'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -41,6 +42,8 @@ gem 'simple_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 group :development do
