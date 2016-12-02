@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109193921) do
+ActiveRecord::Schema.define(version: 20161112061801) do
+
+  create_table "crawls", force: :cascade do |t|
+    t.string  "url"
+    t.integer "user_id"
+    t.integer "num_of_records_crawled"
+    t.integer "crawl_time"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string  "name"
+    t.decimal "original_price", precision: 11, scale: 4
+    t.decimal "current_price",  precision: 11, scale: 4
+    t.decimal "emi_starts_at",  precision: 11, scale: 4
+    t.string  "image_url"
+    t.string  "brand"
+    t.string  "color"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
