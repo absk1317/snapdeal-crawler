@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title Snapdeal Crawler
+    = stylesheet_link_tag    'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default{ role: 'navigation' }
+      .container
+        .navbar-header
+          = link_to 'Snapdeal Crawler', root_path, class: 'navbar-brand'
+        .collapse.navbar-collapse
+          - if current_user
+            %ul.nav.navbar-nav.navbar-right
+              %li.dropdown
+                %a.dropdown-toggle{ role: 'button', href: '#', data: {toggle: 'dropdown'}, aria: {haspopup: 'true', expanded: 'false'} }
+                  = "Welcome #{current_user.email}!"
+                  %span.caret
+                %ul.dropdown-menu
+                  %li
+                    =link_to 'Sign out', destroy_user_session_path, method: :delete
+    .container.admin-page-tables
+      = yield
+:javascript
+  window.crawler.header.init();
+
+
