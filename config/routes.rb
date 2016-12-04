@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :crawls, except: [:edit, :update]
 
+  post '/crawls' => 'crawls#create', as: :create_new_crawl
   # Example resource route with options:
   #   resources :products do
   #     member do

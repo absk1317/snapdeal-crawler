@@ -1,6 +1,16 @@
-= form_for @crawl do |f|
-  .field
-    = f.label :url, 'Enter URL'
-    = f.text_field :url
-  .field
-    = f.submit 'Start Crawling', data: { disable_with: 'STARTING...' }
+.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{style: "margin-top:80px;"}
+  .panel.panel-info
+    .panel-heading
+      .panel-title Begin A new Crawl
+    .panel-body{:style => "padding-top:30px"}
+      = form_for @crawl, html: { class: 'form-horizontal' } do |f|
+        .input-group{:style => "margin-bottom: 25px"}
+          %span.input-group-addon
+            %i.glyphicon.glyphicon-circle-arrow-right
+          = f.text_field :url, autofocus: true, class: 'form-control', placeholder: "Enter URL here", required: "", type: "url"
+        .form-group{:style => "margin-top:10px"}
+          .col-sm-12.controls
+            / # = f.submit 'Start Crawling', data: { disable_with: 'STARTING..' }
+            %button#btn-login.btn.btn-success.btn-crawl{type: 'submit'} Start Crawling
+.loader{style: "display:none"}
+  = image_tag 'gears', id: 'loader'

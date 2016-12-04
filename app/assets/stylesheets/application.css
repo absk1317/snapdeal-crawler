@@ -11,5 +11,29 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require font-awesome
  *= require_self
  */
+.form-signin {
+  margin-top: 50px !important;
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.admin-page-tables {
+  margin-top:  80px;
+}
+
+th, td {
+  text-align: center;
+}
+
+img#loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  z-index: 9999;
+}

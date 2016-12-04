@@ -11,6 +11,7 @@ class CrawlsController < ApplicationController
   end
 
   def index
+    # @new_crawl = current_user.crawls.new
     @crawls = current_user.crawls
   end
 
