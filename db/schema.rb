@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112101005) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20161204104158) do
 
   create_table "crawls", force: :cascade do |t|
     t.string  "url"
@@ -22,6 +19,26 @@ ActiveRecord::Schema.define(version: 20161112101005) do
     t.integer "num_of_records_crawled"
     t.integer "crawl_time"
   end
+
+  create_table "facebook_accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "facebook_accounts", ["user_id"], name: "index_facebook_accounts_on_user_id"
+
+  create_table "google_accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "uid"
+    t.string   "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "google_accounts", ["user_id"], name: "index_google_accounts_on_user_id"
 
   create_table "products", force: :cascade do |t|
     t.string  "name"
@@ -48,9 +65,11 @@ ActiveRecord::Schema.define(version: 20161112101005) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
