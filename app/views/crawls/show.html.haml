@@ -1,5 +1,11 @@
 .row
-  %p
+  .text-right
+    = link_to "/crawls/#{@crawl.id}/products.csv" do
+      %button.btn.btn-sm.btn-primary.btn-create{:type => "button"} Download CSV File
+    = link_to crawl_path(@crawl), method: :patch do
+      .btn.btn-default
+        %em.fa.fa-refresh
+        ReCrawl
   %h1 Total Fetched Products: #{@products.count}
   %p  
   .col-md-12
@@ -29,7 +35,7 @@
                 %td= amount(product.emi_starts_at)
                 %td
                   = image_tag(product.image_url, height: '45', width: '45')
-                %td= product.brand.titleize
+                %td= product.brand.try(:titleize)
                 %td= color(product.color)
 :javascript
   crawler.table.init();

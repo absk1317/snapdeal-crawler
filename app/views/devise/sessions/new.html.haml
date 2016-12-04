@@ -1,22 +1,23 @@
+= flash.alert
 #loginbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{style: "margin-top:80px;"}
   .panel.panel-info
     .panel-heading
       .panel-title Sign In
-      %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}
-        %a{:href => "#", :onclick => "$('#loginbox').hide(); $('#signupbox').hide(); $('#forgotPasswordbox').show()" }
+      %div{style: "float:right; font-size: 80%; position: relative; top:-10px"}
+        %a{href: "#", onclick: "$('#loginbox').hide(); $('#signupbox').hide(); $('#forgotPasswordbox').show()" }
           Forgot your password?
-    .panel-body{:style => "padding-top:30px"}
-      #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
+    .panel-body{style: "padding-top:30px"}
+      #login-alert.alert.alert-danger.col-sm-12{style: "display:none"}
       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal', id: 'loginform'}) do |f|
-        .input-group{:style => "margin-bottom: 25px"}
+        .input-group{style: "margin-bottom: 25px"}
           %span.input-group-addon
             %i.glyphicon.glyphicon-user
           = f.email_field :email, autofocus: true, class: 'form-control', id: 'login-username', placeholder: "Email address", required: "", type: "email"
-        .input-group{:style => "margin-bottom: 25px"}
+        .input-group{style: "margin-bottom: 25px"}
           %span.input-group-addon
             %i.glyphicon.glyphicon-lock
           = f.password_field :password, autocomplete: "off", class: 'form-control', id: 'login-password', placeholder: "Password", required: "", type: "password"
-        .form-group{:style => "margin-top:10px"}
+        .form-group{style: "margin-top:10px"}
           .col-sm-12.controls
             %button#btn-login.btn.btn-success{type: 'submit'} Login
             - if devise_mapping.omniauthable?
@@ -26,9 +27,9 @@
             / %a#btn-fblogin.btn.btn-primary{href: '/auth/google'} Login with Google
         .form-group
           .col-md-12.control
-            %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
+            %div{style: "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
               Don't have an account!
-              %a{:href => "#", :onclick => "$('#loginbox').hide(); $('#signupbox').show()"}
+              %a{href: "#", onclick: "$('#loginbox').hide(); $('#signupbox').show()"}
                 Sign Up Here
 #signupbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2{style: "display:none; margin-top:80px"}
   .panel.panel-info
@@ -38,19 +39,19 @@
         %a#signinlink{href: "#", onclick: "$('#signupbox').hide(); $('#loginbox').show()"} Sign In
     .panel-body
       = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form-horizontal', id: 'signupform'}) do |f|
-        #signupalert.alert.alert-danger{:style => "display:none"}
+        #signupalert.alert.alert-danger{style: "display:none"}
           %p Error:
           %span
         .form-group
-          %label.col-md-3.control-label{:for => "email"} Email
+          %label.col-md-3.control-label{for: "email"} Email
           .col-md-9
             = f.email_field :email, required: true, autofocus: true, class: 'form-control', placeholder: "Email Address"
         .form-group
-          %label.col-md-3.control-label{:for => "password"} Password
+          %label.col-md-3.control-label{for: "password"} Password
           .col-md-9
             = f.password_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), class: 'form-control', placeholder: 'Type your password'
         .form-group
-          %label.col-md-3.control-label{:for => "password"} Password
+          %label.col-md-3.control-label{for: "password"} Password
           .col-md-9
             = f.password_field :password_confirmation, required: true, class: 'form-control', placeholder: 'Type your password again'
         .form-group
@@ -59,10 +60,10 @@
             %button#btn-signup.btn.btn-info{type: 'submit'}
               %i.icon-hand-right
               \&nbsp Signup
-            %span{:style => "margin-left:8px;"} or
-        .form-group{:style => "border-top: 1px solid #999; padding-top:20px"}
+            %span{style: "margin-left:8px;"} or
+        .form-group{style: "border-top: 1px solid #999; padding-top:20px"}
           .col-md-offset-3.col-md-9
-            %button#btn-fbsignup.btn.btn-primary{:type => "button"}
+            %button#btn-fbsignup.btn.btn-primary{type: "button"}
               %i.icon-facebook
                 Sign Up with Facebook
 
@@ -70,21 +71,21 @@
   .panel.panel-info
     .panel-heading
       .panel-title Forgot your password?
-      %div{:style => "float:right; font-size: 80%; position: relative; top:-10px"}
+      %div{style: "float:right; font-size: 80%; position: relative; top:-10px"}
         %a#signinlink{href: "#", onclick: "$('#signupbox').hide(); $('#loginbox').show(); $('#forgotPasswordbox').hide()"} Sign In
-    .panel-body{:style => "padding-top:30px"}
-      #login-alert.alert.alert-danger.col-sm-12{:style => "display:none"}
+    .panel-body{style: "padding-top:30px"}
+      #login-alert.alert.alert-danger.col-sm-12{style: "display:none"}
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal', id: 'loginform' }) do |f|
-        .input-group{:style => "margin-bottom: 25px"}
+        .input-group{style: "margin-bottom: 25px"}
           %span.input-group-addon
             %i.glyphicon.glyphicon-user
           = f.email_field :email, autofocus: true, class: 'form-control', id: 'login-username', placeholder: "Email address", required: "", type: "email"
-        .form-group{:style => "margin-top:10px"}
+        .form-group{style: "margin-top:10px"}
           .col-sm-12.controls
             %button#btn-login.btn.btn-success{type: 'submit'} Send me reset password instructions
         .form-group
           .col-md-12.control
-            %div{:style => "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
+            %div{style: "border-top: 1px solid#888; padding-top:15px; font-size:85%"}
               Don't have an account!
-              %a{:href => "#", :onclick => "$('#loginbox').hide(); $('#signupbox').show(); $('#forgotPasswordbox').hide()"}
+              %a{href: "#", onclick: "$('#loginbox').hide(); $('#signupbox').show(); $('#forgotPasswordbox').hide()"}
                 Sign Up Here

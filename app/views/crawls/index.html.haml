@@ -17,9 +17,10 @@
         %table.tablesorter.table.table-striped.table-bordered.table-list
           %thead
             %tr
-              %th.col-md-9 Crawled URL
-              %th.col-md-2 No. of records fetched
-              %th.col-md-2
+              %th.col-md-7 Crawled URL
+              %th.col-md-1 Records
+              %th.col-md-1 Time Taken
+              %th.sorter-false.col-md-3
                 %em.fa.fa-cog
           %tbody
             - @crawls.each do |crawl|
@@ -27,11 +28,19 @@
                 %td
                   = link_to crawl.url do
                     = truncated_url(crawl.url)
-                %td= crawl.products.count
-                %td
-                  = link_to crawl_path(crawl), method: :delete, data: 'Are you sure?' do
+                %td= crawl.num_of_records_crawled
+                %td= "#{crawl.crawl_time} seconds"
+                %td.sorter-false
+                  = link_to crawl_path(crawl), method: :patch do
+                    .btn.btn-default
+                      %em.fa.fa-refresh
+                      ReCrawl
+                  = link_to crawl_path(crawl), method: :delete do
                     .btn.btn-danger
                       %em.fa.fa-trash
                       Delete
+.text-right
+  = link_to '/crawls.csv' do
+    %button.btn.btn-sm.btn-primary.btn-create{:type => "button"} Download CSV File
 :javascript
   crawler.table.init();

@@ -26,11 +26,11 @@ gem 'devise'
 group :production do
   gem 'pg'
 end
-
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'haml'
 gem 'simple_form'
 gem 'nokogiri'
+gem 'open_uri_redirections'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth-facebook'

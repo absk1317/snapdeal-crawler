@@ -11,13 +11,28 @@ class CrawlsController < ApplicationController
   end
 
   def index
-    # @new_crawl = current_user.crawls.new
     @crawls = current_user.crawls
+    respond_to do |format|
+      format.html
+      format.csv { send_data @crawls.to_csv, filename: "crawls-#{Date.today}.csv" }
+    end
+  end
+
+  def update
+    @crawl = Crawl.find(params[:id])
+    @crawl.start_crawling
+    redirect_to crawl_path(@crawl)
   end
 
   def show
     @crawl = Crawl.find(params[:id])
     @products = @crawl.products
+  end
+
+  def products_csv
+    @crawl = Crawl.find(params[:id])
+    @products = @crawl.products
+    send_data @products.to_csv, filename: "products-#{Date.today}.csv"
   end
 
   def destroy

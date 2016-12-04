@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-  resources :crawls, except: [:edit, :update]
+  resources :crawls, except: [:edit]
   post '/crawls' => 'crawls#create', as: :create_new_crawl
+  get '/crawls/:id/products.csv' => 'crawls#products_csv'
 
   mount LetterOpenerWeb::Engine, at: '/letter_opener'
 
