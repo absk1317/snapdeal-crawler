@@ -237,18 +237,14 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
-  config.omniauth :facebook,
-                  Rails.application.secrets.facebook_app_id,
-                  Rails.application.secrets.facebook_app_secret,
-                  scope: 'public_profile user_friends email',
-                  info_fields: 'email, first_name, last_name'
 
   config.omniauth :google_oauth2,
-                  Rails.application.secrets.google_oauth2_client_id,
-                  Rails.application.secrets.google_oauth2_client_secret,
+                  '357009473194-lft6km93mv2ieb0qac6h25fl983k7ra7.apps.googleusercontent.com',
+                  'aIFX4rJ8q6oLPrafTdXhgB_K',
                   name: "google",
                   skip_jwt: true,
-                  scope: "email, profile, plus.me, http://gdata.youtube.com",
+                  provider_ignores_state: true,
+                  scope: "email, profile, plus.me",
                   prompt: "select_account",
                   image_aspect_ratio: "square",
                   image_size: 50

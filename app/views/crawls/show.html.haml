@@ -3,13 +3,14 @@
   %h1 Total Fetched Products: #{@products.count}
   %p  
   .col-md-12
+    %input#searchBox{ placeholder: "Search..", type: "text" }
     .panel.panel-default.panel-table
       .panel-heading
         .row
           .col.col-xs-6
             %h3.panel-title Products List
       .panel-body
-        %table.table.table-striped.table-bordered.table-list
+        %table.tablesorter.table.table-striped.table-bordered.table-list
           %thead
             %tr
               %th.col-md-4 Name
@@ -21,7 +22,7 @@
               %th.col-md-1 Color
           %tbody
             - @products.each do |product|
-              %tr.data-href{'data-href' => product.product_url}
+              %tr.results.data-href{'data-href' => product.product_url}
                 %td= product.name
                 %td= amount(product.original_price)
                 %td= amount(product.current_price)

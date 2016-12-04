@@ -1,14 +1,7 @@
 module Users
   # For Signin with facebook and google
   class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-    before_action :find_or_create_user, only: [:facebook, :google]
-
-    def facebook
-      unless @user.facebook_account
-        FacebookAccount.create_account!(@auth, @user)
-      end
-      sign_in_user('Facebook')
-    end
+    before_action :find_or_create_user, only: [:google]
 
     def google
       GoogleAccount.create_account!(@auth, @user) unless @user.google_account

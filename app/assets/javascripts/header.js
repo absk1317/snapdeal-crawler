@@ -2,6 +2,8 @@ window.crawler.header = {
   init: function() {
     this.bindClickToEmail();
     this.bindClickToLoader();
+    this.bindSorterToTables();
+    this.bindEventToSearchBox();
   },
 
   bindClickToEmail: function() {
@@ -30,9 +32,26 @@ window.crawler.header = {
       }
 
       $(this).text('Starting Crawl');
-      $('.mainbox').html(`Starting Crawl. Please Wait,
-        You will be automatically redirected to the results page once finished.`);
+      $('.mainbox').html("Starting Crawl. Please Wait, You will be automatically redirected to the results page once finished.");
       $('.loader').show();
+    })
+  },
+
+  bindSorterToTables: function() {
+    $("table").tablesorter();
+  },
+
+  bindEventToSearchBox: function() {
+    var $rows = $('table tr.results');
+    $('#searchBox').keyup(function() {
+      var val = '^(?=.*\\b' + $.trim($(this).val()).split(/\s+/).join('\\b)(?=.*\\b') + ').*$',
+          reg = RegExp(val, 'i'),
+          text;
+
+      $rows.show().filter(function() {
+        text = $(this).text().replace(/\s+/g, ' ');
+        return !reg.test(text);
+      }).hide();
     })
   }
 }

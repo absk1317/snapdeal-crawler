@@ -4,6 +4,7 @@
   %p To begin a new crawl, hit crawl.
   %p  
   .col-md-12
+    %input#searchBox{ placeholder: "Search..", type: "text" }
     .panel.panel-default.panel-table
       .panel-heading
         .row
@@ -13,7 +14,7 @@
             = link_to new_crawl_path do
               %button.btn.btn-sm.btn-primary.btn-create{:type => "button"} New Crawl
       .panel-body
-        %table.table.table-striped.table-bordered.table-list
+        %table.tablesorter.table.table-striped.table-bordered.table-list
           %thead
             %tr
               %th.col-md-9 Crawled URL
@@ -22,7 +23,7 @@
                 %em.fa.fa-cog
           %tbody
             - @crawls.each do |crawl|
-              %tr.data-href{'data-href'=> crawl_path(crawl)}
+              %tr.results.data-href{'data-href'=> crawl_path(crawl)}
                 %td
                   = link_to crawl.url do
                     = truncated_url(crawl.url)
