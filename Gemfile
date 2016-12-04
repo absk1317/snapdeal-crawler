@@ -23,10 +23,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'font-awesome-rails'
 # For Authentication
 gem 'devise'
-group :production do
-  gem 'pg'
-  gem 'rails_12factor'
-end
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'haml'
 gem 'simple_form'
@@ -45,6 +41,8 @@ gem 'letter_opener_web'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3'
+  gem 'shoulda-matchers'
+  gem 'rspec-rails'
   gem 'byebug'
   gem 'pry'
   gem 'pry-nav'
@@ -58,3 +56,7 @@ group :development do
   gem 'spring'
 end
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
